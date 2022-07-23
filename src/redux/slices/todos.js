@@ -31,20 +31,18 @@ const todoSlice = createSlice({
 					? { ...todo, completed: !todo.completed }
 					: todo
 			);
+		},
+
+		updateTodo(state, action) {
+			return state.map((todo) =>
+				todo.id === action.payload.edit.id
+					? { ...todo, task: action.payload.task }
+					: todo
+			);
 		}
-
-		// updateTodo(state,action) {
-
-		// 		state.map((todo) =>
-		// 			todo.id === editTodo.id
-		// 				? { ...todo, task: inputContent }
-		// 				: todo
-		// 		)
-
-		// 	setEditTodo(null);
-		// }
 	}
 });
 
-export const { addTodo, deleteTodo, toggleTodo } = todoSlice.actions;
+export const { addTodo, deleteTodo, toggleTodo, updateTodo } =
+	todoSlice.actions;
 export default todoSlice.reducer;
