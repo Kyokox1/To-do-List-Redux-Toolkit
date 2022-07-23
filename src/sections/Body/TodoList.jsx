@@ -6,9 +6,19 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTodo, toggleTodo } from "../../redux/slices/todos";
 
-export const TodoList = ({ setEditTodo }) => {
+export const TodoList = ({ setEditTodo, inputTodo }) => {
 	const todos = useSelector((state) => state.todos);
 	const dispatch = useDispatch();
+
+	const handleToggleTodo = (todo) => {
+		dispatch(toggleTodo(todo));
+		inputTodo.current.focus();
+	};
+
+	const handleDeleteTodo = (todo) => {
+		dispatch(deleteTodo(todo));
+		inputTodo.current.focus();
+	};
 
 	return (
 		<>
@@ -18,7 +28,7 @@ export const TodoList = ({ setEditTodo }) => {
 						<input
 							className={styles.todo__checkbox}
 							type="checkbox"
-							onChange={() => dispatch(toggleTodo(todo))}
+							onChange={() => handleToggleTodo(todo)}
 						/>
 						<h3
 							className={`
@@ -35,7 +45,7 @@ export const TodoList = ({ setEditTodo }) => {
 							<MdOutlineModeEdit />
 						</button>
 						<button
-							onClick={() => dispatch(deleteTodo(todo))}
+							onClick={() => handleDeleteTodo(todo)}
 							className={`${styles.todo__button} ${styles.todo__button__trash}`}
 						>
 							<BsTrashFill />

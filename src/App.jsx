@@ -6,12 +6,12 @@ import { AddTodo } from "./sections/AddTodo/AddTodo";
 import { TodoList } from "./sections/Body/TodoList";
 
 function App() {
-	const tasks = [
-		{ id: 1, task: "hacer la cama", completed: false },
-		{ id: 2, task: "hacer algo", completed: false }
-	];
+	// const tasks = [
+	// 	{ id: 1, task: "hacer la cama", completed: false },
+	// 	{ id: 2, task: "hacer algo", completed: false }
+	// ];
 
-	const [todos, setTodos] = useState(tasks);
+	// const [todos, setTodos] = useState(tasks);
 	const [editTodo, setEditTodo] = useState(null);
 	const inputTodo = useRef(null);
 
@@ -49,10 +49,9 @@ function App() {
 					<AddTodo
 						editTodo={editTodo}
 						setEditTodo={setEditTodo}
-						setTodos={setTodos}
 						inputTodo={inputTodo}
 					/>
-					<TodoList setEditTodo={setEditTodo} />
+					<TodoList setEditTodo={setEditTodo} inputTodo={inputTodo} />
 				</main>
 				<footer></footer>
 			</section>
