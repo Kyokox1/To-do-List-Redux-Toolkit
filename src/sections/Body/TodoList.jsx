@@ -1,10 +1,11 @@
 import React from "react";
-import styles from "./todoList.module.css";
 import { BsTrashFill } from "react-icons/bs";
 import { MdOutlineModeEdit } from "react-icons/md";
 
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTodo, toggleTodo } from "../../redux/slices/todos";
+
+import styles from "./todoList.module.css";
 
 export const TodoList = ({ setEditTodo, inputTodo }) => {
 	const todos = useSelector((state) => state.todos);

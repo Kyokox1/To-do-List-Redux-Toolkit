@@ -1,0 +1,15 @@
+.incomplete__todos,
+.complete__todos {
+	text-underline-position: under;
+	width: max-content;
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+
+.complete__todos {
+	text-decoration: underline #169882 2px;
+}
+
+.incomplete__todos {
+	text-decoration: underline red 2px;
+}
