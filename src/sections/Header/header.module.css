@@ -1,0 +1,12 @@
+.container {
+	text-align: center;
+}
+
+.title {
+	background: linear-gradient(to right, rgb(23, 193, 164), rgb(9, 91, 77));
+	-webkit-background-clip: text;
+	color: transparent;
+	font-weight: 700;
+	font-size: 2rem;
+	padding-bottom: 30px;
+}

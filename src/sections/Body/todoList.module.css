@@ -1,0 +1,57 @@
+.completed {
+	text-decoration: line-through #169882 3px;
+	font-style: italic;
+}
+
+.todo__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px 8px;
+	margin-bottom: 10px;
+	background-color: #d6d8d8;
+	border-radius: 4px;
+}
+
+.todo__container div {
+	display: flex;
+	align-items: center;
+	max-width: 85%;
+}
+
+.todo__task {
+	padding-left: 10px;
+	max-width: 100%;
+	font-weight: 300;
+	font-size: 1rem;
+}
+
+.todo__button {
+	padding: 10px;
+	background: transparent;
+	border-radius: 50%;
+	border: none;
+	cursor: pointer;
+	transition: background 0.3s ease-in-out;
+	font-size: 1rem;
+}
+
+.todo__button__trash {
+	color: red;
+}
+
+.todo__button__pencil {
+	color: #169882;
+	font-size: 1.2rem;
+}
+
+.todo__button:hover {
+	background: #ffffff;
+}
+
+.todo__checkbox {
+	/* appearance: none; */
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+}

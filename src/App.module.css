@@ -1,0 +1,15 @@
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	padding: 50px 0;
+	background-color: rgb(22, 152, 130);
+}
+
+.container__todos {
+	background-color: #ffffff;
+	padding: 30px 50px;
+	border-radius: 14px;
+	width: 60%;
+}
