@@ -21,7 +21,7 @@ const todoSlice = createSlice({
 		},
 
 		deleteTodo(state, action) {
-			return state.filter((todos) => todos.id !== action.payload.id);
+			return state.filter((todo) => todo.id !== action.payload.id);
 			// inputTodo.current.focus();
 		},
 

@@ -15,31 +15,31 @@ function App() {
 	const [editTodo, setEditTodo] = useState(null);
 	const inputTodo = useRef(null);
 
-	const addTodo = (todo) => {
-		const newTodo = {
-			id: +new Date(),
-			task: todo,
-			completed: false
-		};
-		setTodos((prevTodos) => [...prevTodos, newTodo]);
-	};
+	// const addTodo = (todo) => {
+	// 	const newTodo = {
+	// 		id: +new Date(),
+	// 		task: todo,
+	// 		completed: false
+	// 	};
+	// 	setTodos((prevTodos) => [...prevTodos, newTodo]);
+	// };
 
-	const deleteTodo = (todo) => {
-		setTodos((prevTodos) =>
-			prevTodos.filter((todos) => todos.id !== todo.id)
-		);
-		inputTodo.current.focus();
-	};
+	// const deleteTodo = (todo) => {
+	// 	setTodos((prevTodos) =>
+	// 		prevTodos.filter((todos) => todos.id !== todo.id)
+	// 	);
+	// 	inputTodo.current.focus();
+	// };
 
-	const toggleTodo = (task) => {
-		setTodos((prevTodos) =>
-			prevTodos.map((todo) =>
-				todo.id === task.id
-					? { ...todo, completed: !todo.completed }
-					: todo
-			)
-		);
-	};
+	// const toggleTodo = (task) => {
+	// 	setTodos((prevTodos) =>
+	// 		prevTodos.map((todo) =>
+	// 			todo.id === task.id
+	// 				? { ...todo, completed: !todo.completed }
+	// 				: todo
+	// 		)
+	// 	);
+	// };
 
 	return (
 		<div className={style.container}>
@@ -47,18 +47,12 @@ function App() {
 				<Header />
 				<main>
 					<AddTodo
-						addTodo={addTodo}
 						editTodo={editTodo}
 						setEditTodo={setEditTodo}
 						setTodos={setTodos}
 						inputTodo={inputTodo}
 					/>
-					<TodoList
-						deleteTodo={deleteTodo}
-						setEditTodo={setEditTodo}
-						todos={todos}
-						toggleTodo={toggleTodo}
-					/>
+					<TodoList setEditTodo={setEditTodo} />
 				</main>
 				<footer></footer>
 			</section>
