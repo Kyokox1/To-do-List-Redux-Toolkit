@@ -1,10 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [
-	{ id: 1, task: "hacer la cama", completed: false },
-	{ id: 2, task: "hacer algo", completed: false },
-	{ id: 3, task: "hacer jijij", completed: false }
-];
+const initialState = {
+	todo: [
+		{ id: 1, task: "hacer la cama", completed: false },
+		{ id: 2, task: "hacer algo", completed: false },
+		{ id: 3, task: "hacer jijij", completed: false }
+	],
+
+	editTodo: null
+};
 
 const todoSlice = createSlice({
 	name: "todos",
@@ -13,20 +17,21 @@ const todoSlice = createSlice({
 		addTodo(state, action) {
 			const newTodo = {
 				id: +new Date(),
-				task: action.payload.task,
+				task: action.payload,
 				completed: false
 			};
-			// state.push(newTodo);
-			return [...state, newTodo];
+			// return [...state, newTodo];
+			state.todo = [...state.todo, newTodo];
 		},
 
 		deleteTodo(state, action) {
-			return state.filter((todo) => todo.id !== action.payload.id);
-			// inputTodo.current.focus();
+			state.todo = state.todo.filter(
+				(todo) => todo.id !== action.payload.id
+			);
 		},
 
 		toggleTodo(state, action) {
-			return state.map((todo) =>
+			state.todo = state.todo.map((todo) =>
 				todo.id === action.payload.id
 					? { ...todo, completed: !todo.completed }
 					: todo
@@ -34,15 +39,19 @@ const todoSlice = createSlice({
 		},
 
 		updateTodo(state, action) {
-			return state.map((todo) =>
+			state.todo = state.todo.map((todo) =>
 				todo.id === action.payload.edit.id
 					? { ...todo, task: action.payload.task }
 					: todo
 			);
+		},
+
+		editTodo(state, action) {
+			state.editTodo = action.payload;
 		}
 	}
 });
 
-export const { addTodo, deleteTodo, toggleTodo, updateTodo } =
+export const { addTodo, deleteTodo, toggleTodo, updateTodo, editTodo } =
 	todoSlice.actions;
 export default todoSlice.reducer;

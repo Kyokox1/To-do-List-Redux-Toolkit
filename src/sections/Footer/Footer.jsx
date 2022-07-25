@@ -7,7 +7,7 @@ import styles from "./footer.module.css";
 export const Footer = () => {
 	const todos = useSelector((state) => state.todos);
 
-	const incompleteTodos = todos.filter((todo) => !todo.completed);
+	const incompleteTodos = todos.todo.filter((todo) => !todo.completed);
 
 	return (
 		<footer>

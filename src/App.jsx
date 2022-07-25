@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
 import "./reset.css";
 import style from "./App.module.css";
@@ -9,7 +9,6 @@ import { TodoList } from "./sections/Body/TodoList";
 import { Footer } from "./sections/Footer/Footer";
 
 function App() {
-	const [editTodo, setEditTodo] = useState(null);
 	const inputTodo = useRef(null);
 
 	return (
@@ -17,12 +16,8 @@ function App() {
 			<section className={style.container__todos}>
 				<Header />
 				<main>
-					<AddTodo
-						editTodo={editTodo}
-						setEditTodo={setEditTodo}
-						inputTodo={inputTodo}
-					/>
-					<TodoList setEditTodo={setEditTodo} inputTodo={inputTodo} />
+					<AddTodo inputTodo={inputTodo} />
+					<TodoList inputTodo={inputTodo} />
 				</main>
 				<Footer />
 			</section>

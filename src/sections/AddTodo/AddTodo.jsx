@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from "react";
 
-import { addTodo, updateTodo } from "../../redux/slices/todos";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo, updateTodo, editTodo } from "../../redux/slices/todos";
 
 import styles from "./addTodo.module.css";
 
-export const AddTodo = ({ editTodo, setTodos, setEditTodo, inputTodo }) => {
+export const AddTodo = ({ inputTodo }) => {
 	const [inputContent, setInputContent] = useState("");
 
+	const editableTodo = useSelector((state) => state.todos.editTodo);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (editTodo) {
-			setInputContent(editTodo.task);
+		if (editableTodo) {
+			setInputContent(editableTodo.task);
 			inputTodo.current.focus();
 		}
-	}, [editTodo]);
+	}, [editableTodo]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (!inputContent) return;
-		if (editTodo) {
-			dispatch(updateTodo({ task: inputContent, edit: editTodo }));
-			setEditTodo(null);
+		if (editableTodo) {
+			dispatch(updateTodo({ task: inputContent, edit: editableTodo }));
+			dispatch(editTodo(null));
 		}
-		if (!editTodo) dispatch(addTodo({ task: inputContent }));
+		if (!editableTodo) dispatch(addTodo(inputContent));
 		setInputContent("");
 	};
 
@@ -40,7 +41,7 @@ export const AddTodo = ({ editTodo, setTodos, setEditTodo, inputTodo }) => {
 			/>
 			<button type="submit">
 				{" "}
-				{editTodo ? "Edit Todo" : "Add Todo"}
+				{editableTodo ? "Edit Todo" : "Add Todo"}
 			</button>
 		</form>
 	);

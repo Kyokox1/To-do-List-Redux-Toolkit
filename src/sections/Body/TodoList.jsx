@@ -3,12 +3,12 @@ import { BsTrashFill } from "react-icons/bs";
 import { MdOutlineModeEdit } from "react-icons/md";
 
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTodo, toggleTodo } from "../../redux/slices/todos";
+import { deleteTodo, editTodo, toggleTodo } from "../../redux/slices/todos";
 
 import styles from "./todoList.module.css";
 
-export const TodoList = ({ setEditTodo, inputTodo }) => {
-	const todos = useSelector((state) => state.todos);
+export const TodoList = ({ inputTodo }) => {
+	const todos = useSelector((state) => state.todos.todo);
 	const dispatch = useDispatch();
 
 	const handleToggleTodo = (todo) => {
@@ -40,7 +40,7 @@ export const TodoList = ({ setEditTodo, inputTodo }) => {
 					</div>
 					<div>
 						<button
-							onClick={() => setEditTodo(todo)}
+							onClick={() => dispatch(editTodo(todo))}
 							className={`${styles.todo__button} ${styles.todo__button__pencil}`}
 						>
 							<MdOutlineModeEdit />
